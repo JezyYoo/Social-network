@@ -4,7 +4,7 @@ import cl from './Navbar.module.css';
 const Navbar = () =>{
     return(
       <nav className={`col-md-2 ${cl.navg}`}>
-      <div className="menu_item">
+      <div className={`meny-item ${cl.active}`}>
           <a>Profile</a>
       </div>
       <div className="menu_item">
