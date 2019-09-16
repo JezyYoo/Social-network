@@ -2,7 +2,13 @@
     background-color: rgb(255, 187, 0);
     }
 
-.active
-{
-    color:white;
+a {
+    color: white;
+}
+a:hover{
+    color: rgba(255, 17, 163, 0.46);
+    text-decoration: none;
+}
+.active{
+    color:red;
 }
