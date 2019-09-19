@@ -5,6 +5,9 @@
 a {
     color: white;
 }
+.menu_item{
+    padding-bottom: 6px;
+}
 a:hover{
     color: rgba(255, 17, 163, 0.46);
     text-decoration: none;

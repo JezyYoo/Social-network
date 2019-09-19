@@ -1,0 +1,25 @@
+.dialogs{
+
+}
+.dialogItems{
+    background-color: aquamarine;
+    padding-left: 10px;
+}
+.dialog{
+    padding:10px 0 50px 20px;
+}
+
+.dialog.active{
+    color:gold;
+}
+
+.messages{
+
+}
+.message{
+    padding:10px 0 10px 20px;
+    background-color:yellow;
+    border:1px solid black;
+    margin:10px 0 4px 0;
+}
+
