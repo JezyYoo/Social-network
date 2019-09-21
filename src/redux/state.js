@@ -19,19 +19,29 @@ let state ={
             {id:2, msg:"It's my life",likes:'2'},
             {id:3, msg:"React is so good",likes:'6'},
             {id:4, msg:"Fair enough!",likes:'13'},
-        ]
+        ],
+        newPostText:'aaaaaa'
     }
 
 }
 
-export let addPost = (message)=>{
+export let addPost = ()=>{
     state.profilePage.postsData.push(
         {
             id:5,
-            msg:message,
+            msg:state.profilePage.newPostText,
             likes:'0'
         })
+    state.profilePage.newPostText ='';
     renderEntireTree(state);
 }
+
+export let changeNewPostText = (text) =>{
+    state.profilePage.newPostText = text;
+    renderEntireTree(state);
+
+}
+
+
 
 export default state;
