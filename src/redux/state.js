@@ -1,54 +1,65 @@
-let store ={
-    _state :{
-        dialogsPage:{
+let store = {
+    _state: {
+        dialogsPage: {
             dialogsData: [
-                {id:1, name:'Angrey'},
-                {id:2, name:'Petya'},
-                {id:3, name:'Sveta'},
+                {id: 1, name: 'Angrey'},
+                {id: 2, name: 'Petya'},
+                {id: 3, name: 'Sveta'},
             ],
             messagesData: [
-                {id:1, name:'LOL'},
-                {id:2, name:'Funny message'},
-                {id:3, name:'Not funny message'},
+                {id: 1, name: 'LOL'},
+                {id: 2, name: 'Funny message'},
+                {id: 3, name: 'Not funny message'},
             ],
         },
-        profilePage:{
+        profilePage: {
             postsData: [
-                {id:1, msg:"Hello wordl",likes:'25'},
-                {id:2, msg:"It's my life",likes:'2'},
-                {id:3, msg:"React is so good",likes:'6'},
-                {id:4, msg:"Fair enough!",likes:'13'},
+                {id: 1, msg: "Hello wordl", likes: '25'},
+                {id: 2, msg: "It's my life", likes: '2'},
+                {id: 3, msg: "React is so good", likes: '6'},
+                {id: 4, msg: "Fair enough!", likes: '13'},
             ],
-            newPostText:'aaaaaa'
+            newPostText: 'aaaaaa'
         }
 
     },
 
-    getState(){
+    getState() {
         return this._state;
     },
 
-    addPost(){
+    addPost() {
         this._state.profilePage.postsData.push(
             {
-                id:5,
-                msg:this._state.profilePage.newPostText,
-                likes:'0'
+                id: 5,
+                msg: this._state.profilePage.newPostText,
+                likes: '0'
             })
-        this._state.profilePage.newPostText ='';
+        this._state.profilePage.newPostText = '';
         this.renderEntireTree(this._state);
     },
 
-    changeNewPostText(text){
+    changeNewPostText(text) {
         this._state.profilePage.newPostText = text;
         this.renderEntireTree(this._state);
 
     },
 
-    renderEntireTree(){},
+    renderEntireTree() {
+    },
 
-    subscribe(observer){
+    subscribe(observer) {
         this.renderEntireTree = observer;
+    },
+
+    dispatch(action) {
+        switch (action.type) {
+            case 'addPost':
+                this.addPost()
+                break;
+            case 'changeNewPostText':
+                this.changeNewPostText(action.text);
+        }
     }
 }
 

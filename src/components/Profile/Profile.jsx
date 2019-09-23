@@ -11,7 +11,7 @@ const Profile = (props) => {
     return (
         <div className={`${cl.content} col-md-10`}>
             <ProfileInfo/>
-            <MyPosts posts={props.posts} addPost={props.addPost} updatePostText={props.updatePostText}/>
+            <MyPosts posts={props.posts} dispatch={props.dispatch}/>
         </div>
     )
 }

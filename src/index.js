@@ -10,9 +10,7 @@ let renderEntireTree = ()=>
 {
     ReactDOM.render(
         <App
-            state={store.getState()}
-            addPost={store.addPost.bind(store)}
-            changeNewPostText={store.changeNewPostText.bind(store)}/> ,
+            state={store.getState()} dispatch={store.dispatch.bind(store)}/> ,
         document.getElementById('root'));
 }
 
