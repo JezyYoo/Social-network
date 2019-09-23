@@ -63,5 +63,9 @@ let store = {
     }
 }
 
+export const addPostActionCreator = ()=> ({type:'addPost'});
+export const changeNewPostTextActionCreator = (text)=> ({type:'changeNewPostText',text:text});
+
+
 window.sotre = store;
 export default store;
