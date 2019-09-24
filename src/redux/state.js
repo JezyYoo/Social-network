@@ -11,6 +11,7 @@ let store = {
                 {id: 2, name: 'Funny message'},
                 {id: 3, name: 'Not funny message'},
             ],
+            newMessage:"AVE"
         },
         profilePage: {
             postsData: [
@@ -36,13 +37,28 @@ let store = {
                 likes: '0'
             })
         this._state.profilePage.newPostText = '';
-        this.renderEntireTree(this._state);
+        this.renderEntireTree();
     },
 
     changeNewPostText(text) {
         this._state.profilePage.newPostText = text;
-        this.renderEntireTree(this._state);
+        this.renderEntireTree();
 
+    },
+
+    addMessage(){
+        this._state.dialogsPage.messagesData.push(
+            {
+                id: 4, name: this._state.dialogsPage.newMessage
+            }
+        );
+        this._state.dialogsPage.newMessage ='';
+        this.renderEntireTree();
+    },
+
+    changeNewMessageText(text){
+      this._state.dialogsPage.newMessage  = text;
+      this.renderEntireTree();
     },
 
     renderEntireTree() {
@@ -59,6 +75,13 @@ let store = {
                 break;
             case 'changeNewPostText':
                 this.changeNewPostText(action.text);
+                break;
+            case 'addMessage':
+                this.addMessage();
+                break;
+            case 'changeAddMessage':
+                this.changeNewMessageText(action.mes_text);
+                break;
         }
     }
 }
@@ -66,6 +89,9 @@ let store = {
 export const addPostActionCreator = ()=> ({type:'addPost'});
 export const changeNewPostTextActionCreator = (text)=> ({type:'changeNewPostText',text:text});
 
+export const addMessageActionCreator = ()=> ({type:'addMessage'});
+export const changeAddMessageActionCreator = (text)=> ({type:'changeAddMessage',mes_text:text});
 
-window.sotre = store;
+
+window.store = store;
 export default store;
