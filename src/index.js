@@ -4,19 +4,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import store from "./redux/redux-store";
+import {Provider} from "react-redux";
 
 
-let renderEntireTree = ()=>
-{
-    ReactDOM.render(
-        <App
-           store={store} state={store.getState()} dispatch={store.dispatch.bind(store)}/> ,
-        document.getElementById('root'));
-}
 
-renderEntireTree();
-store.subscribe(renderEntireTree);
-
+ReactDOM.render(<Provider store={store}><App/></Provider>, document.getElementById('root'));
 
 
 serviceWorker.unregister();

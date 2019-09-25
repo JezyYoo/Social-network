@@ -9,21 +9,24 @@ const initialState ={
 }
 
 const profileReducer = (state = initialState,action)=>{
+    let stateCopy = {...state};
+    stateCopy.postsData = [...state.postsData];
     if(action.type == 'addPost')
     {
-        state.postsData.push(
+
+        stateCopy.postsData.push(
             {
                 id: 5,
                 msg: state.newPostText,
                 likes: '0'
             })
-        state.newPostText = '';
+        stateCopy.newPostText = '';
     }
     else if(action.type == 'changeNewPostText')
     {
-        state.newPostText  = action.text;
+        stateCopy.newPostText  = action.text;
     }
-    return state;
+    return stateCopy;
 }
 
 export const addPostActionCreator = ()=> ({type:'addPost'});

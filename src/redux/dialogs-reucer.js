@@ -9,28 +9,29 @@ const initialState = {
         {id: 2, name: 'Funny message'},
         {id: 3, name: 'Not funny message'},
     ],
-    newMessage:"AVE"
+    newMessage: "AVE"
 }
 
 
-const dialogsReducer = (state = initialState,action)=>{
-    if(action.type == 'addMessage')
-    {
-        state.messagesData.push(
+const dialogsReducer = (state = initialState, action) => {
+    var copyState = {...state}
+    copyState.messagesData = [...state.messagesData];
+
+    if (action.type == 'addMessage') {
+        copyState.messagesData.push(
             {
                 id: 4, name: state.newMessage
             }
         );
-        state.newMessage ='';
+        state.newMessage = '';
     }
-    else if(action.type == 'changeAddMessage')
-    {
-        state.newMessage = action.mes_text;
+    else if (action.type == 'changeAddMessage') {
+        copyState.newMessage = action.mes_text;
     }
-    return state;
+    return copyState;
 }
 
-export const addMessageActionCreator = ()=> ({type:'addMessage'});
-export const changeAddMessageActionCreator = (text)=> ({type:'changeAddMessage',mes_text:text});
+export const addMessageActionCreator = () => ({type: 'addMessage'});
+export const changeAddMessageActionCreator = (text) => ({type: 'changeAddMessage', mes_text: text});
 
 export default dialogsReducer;
