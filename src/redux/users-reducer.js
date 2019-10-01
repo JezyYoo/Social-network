@@ -1,32 +1,49 @@
+const FOLLOW = 'FOLLOW';
+const UNFOLLOW ='UNFOLLOW';
+const SET_USERS ='SET_USERS';
+
+
 const initialState = {
-    dialogsData: [
-        {id: 1, name: 'Angrey'},
-        {id: 2, name: 'Petya'},
-        {id: 3, name: 'Sveta'},
-    ],
-    messagesData: [
-        {id: 1, name: 'LOL'},
-        {id: 2, name: 'Funny message'},
-        {id: 3, name: 'Not funny message'},
-    ],
-    newMessage: "AVE"
+    users: [
+        // {id: 1, firstName: 'Angrey',status:'Hello hello', location:{city:'Odessa',country:'Ukraine'},followed:true},
+        // {id: 2, firstName: 'Sanda',status:'Programming is cool', location:{city:'Moskow',country:'Russia',followed:false}},
+        // {id: 3, firstName: 'Perya',status:'I love France', location:{city:'Minsk',country:'Belarus'},followed:true},
+        // {id: 4, firstName: 'Sveta',status:'London is the capital of Grate Britain', location:{city:'London',country:'UK'},followed:true},
+    ]
 }
 
 
-const dialogsReducer = (state = initialState, action) => {
-    var copyState = {...state}
+const usersReducer = (state = initialState, action) => {
 
-    if (action.type == 'addMessage') {
-        copyState.messagesData = [...state.messagesData,{id: 4, name: state.newMessage}];
-        copyState.newMessage = '';
+    switch(action.type)
+    {
+        case FOLLOW:
+            return {
+                ...state,
+                users: state.users.map(u => u.id === action.userId ? {...u,followed:true} : u)
+            }
+            break;
+
+        case UNFOLLOW:
+            debugger;
+            return {
+                ...state,
+                users: state.users.map(u => u.id === action.userId ? {...u,followed:false} : u)
+            }
+            break;
+        case SET_USERS:
+            return{
+                ...state,
+                users:[...state.users,...action.users]
+            }
+            break;
+        default:
+            return state;
     }
-    else if (action.type == 'changeAddMessage') {
-        copyState.newMessage = action.mes_text;
-    }
-    return copyState;
 }
 
-export const addMessageActionCreator = () => ({type: 'addMessage'});
-export const changeAddMessageActionCreator = (text) => ({type: 'changeAddMessage', mes_text: text});
+export const followAC = (userId) => ({type: FOLLOW, userId:userId});
+export const unfollowAC = (userId) => ({type: UNFOLLOW, userId:userId});
+export const setUsersAC = (users)=>({type: SET_USERS,users});
 
-export default dialogsReducer;
+export default usersReducer;
