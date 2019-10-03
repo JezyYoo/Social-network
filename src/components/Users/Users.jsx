@@ -1,6 +1,7 @@
 import React from 'react';
 import cl from './Users.module.css'
 
+
 const Users = (props) => {
 
     if (props.users.length === 0) {
@@ -16,7 +17,8 @@ const Users = (props) => {
                 id: 2,
                 firstName: 'Sanda',
                 status: 'Programming is cool',
-                location: {city: 'Moskow', country: 'Russia', followed: false}
+                location: {city: 'Moskow', country: 'Russia'},
+                followed: false
             },
             {
                 id: 3,
@@ -32,38 +34,28 @@ const Users = (props) => {
                 location: {city: 'London', country: 'UK'},
                 followed: true
             }
-        ]
-    )
+        ])
     }
 
-    return (
-        <div className='col-md-10'>
-            {
-                props.users.map(u =>
-                    <div className='row'>
-                        <div className='col-md-2'>
-                            <div><img width='100px'
-                                      src="https://banner2.kisspng.com/20180410/bbw/kisspng-avatar-user-medicine-surgery-patient-avatar-5acc9f7a7cb983.0104600115233596105109.jpg"
-                                      alt=""/></div>
-                            <div>
-                                {u.followed ? <button onClick={() => props.unfollow(u.id)}>Unfollow</button> :
-                                    <button onClick={() => props.follow(u.id)}>Follow</button>
-                                }
-                            </div>
-                        </div>
+    return <div>
+    {props.users.map(u => <div>
+            <div className='row col-md-10'>
+                <div><img width="100px"
+                    src=" https://banner2.kisspng.com/20180410/bbw/kisspng-avatar-user-medicine-surgery-patient-avatar-5acc9f7a7cb983.0104600115233596105109.jpg"
+                    alt=""/></div>
+            </div>
+        <div>
+        {u.followed?<button onClick={()=>props.unfollow(u.id)}>Follow</button>:<button onClick={()=>props.follow(u.id)}>Unfollow</button>}
+        </div>
 
-                        <div className='col-md-10'>
-                            <div>{u.firstName}</div>
-                            <div>{u.location.country} </div>
-                            <div>{u.location.city}</div>
-                            <div>{u.status}</div>
-                            <div></div>
-                        </div>
+            <div>{u.firstName}</div>
+            <div>{u.status}</div>
+            <div>{u.location.city}</div>
+        <div>{u.location.country}</div>
 
-                    </div>
-                )
-            }
         </div>)
+    }
+    </div>
 
 
 }
