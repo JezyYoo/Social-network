@@ -1,12 +1,20 @@
 import React from 'react';
 import cl from './ProfileInfo.module.css';
 
-const ProfileInfo = () => {
+const ProfileInfo = (props) => {
+
+    if(!props.profile)
+        return <div></div>
+
     return (
         <div>
-            <img className={cl.main}
-                 src="https://i0.wp.com/www.euroscientist.com/wp-content/uploads/2019/06/cropped-social-media-3846597_1280-1.png?resize=672%2C372&ssl=1"></img>
-            <div>ava + descr</div>
+            <div><img className={cl.main} src={props.profile.avatar} width='200px'></img></div>
+            <div>
+                <div><b>FirstName: </b> {props.profile.firstName}</div>
+                <div><b>Country: </b>{props.profile.location.country}</div>
+                <div><b>City: </b>{props.profile.location.city}</div>
+                <div><b>Status: </b>{props.profile.status}</div>
+            </div>
         </div>
     )
 }

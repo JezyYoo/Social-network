@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from "react-router-dom";
 
 
 class Users extends React.Component{
@@ -10,21 +11,21 @@ class Users extends React.Component{
         this.props.setUsers([
             {
                 id: 1,
-                firstName: 'Angrey',
+                firstName: 'Andrey',
                 status: 'Hello hello',
                 location: {city: 'Odessa', country: 'Ukraine'},
                 followed: true
             },
             {
                 id: 2,
-                firstName: 'Sanda',
+                firstName: 'Sandra',
                 status: 'Programming is cool',
                 location: {city: 'Moskow', country: 'Russia'},
                 followed: false
             },
             {
                 id: 3,
-                firstName: 'Perya',
+                firstName: 'Petya',
                 status: 'I love France',
                 location: {city: 'Minsk', country: 'Belarus'},
                 followed: true
@@ -35,6 +36,12 @@ class Users extends React.Component{
                 status: 'London is the capital of Grate Britain',
                 location: {city: 'London', country: 'UK'},
                 followed: true
+            },
+            {id: 5,
+                firstName: 'Danya',
+                status:'Hello React-Redux',
+                location:{city:'Odessa', country:'Ukraine'},
+                followed:true
             }
         ])
     }
@@ -43,9 +50,9 @@ class Users extends React.Component{
         return <div>
             {this.props.users.map(u => <div>
                 <div className='row col-md-10'>
-                    <div><img width="100px"
+                    <NavLink to={/profile/ + u.id}><img width="100px"
                               src=" https://banner2.kisspng.com/20180410/bbw/kisspng-avatar-user-medicine-surgery-patient-avatar-5acc9f7a7cb983.0104600115233596105109.jpg"
-                              alt=""/></div>
+                              alt=""/></NavLink>
                 </div>
                 <div>
                     {u.followed?<button onClick={()=>this.props.unfollow(u.id)}>Follow</button>:<button onClick={()=>this.props.follow(u.id)}>Unfollow</button>}

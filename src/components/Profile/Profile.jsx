@@ -5,12 +5,10 @@ import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
 
 
-
-
 const Profile = (props) => {
     return (
         <div className={`${cl.content} col-md-10`}>
-            <ProfileInfo/>
+            <ProfileInfo profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     )

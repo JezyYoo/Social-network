@@ -5,7 +5,8 @@ const initialState ={
         {id: 3, msg: "React is so good", likes: '6'},
         {id: 4, msg: "Fair enough!", likes: '13'},
     ],
-    newPostText: 'aaaaaa'
+    newPostText: 'aaaaaa',
+    profile:null
 }
 
 const profileReducer = (state = initialState,action)=>{
@@ -18,11 +19,16 @@ const profileReducer = (state = initialState,action)=>{
     else if(action.type == 'changeNewPostText')
     {
         stateCopy.newPostText  = action.text;
-    };
+    }
+    else if(action.type =='setUserProfile')
+    {
+        stateCopy.profile = action.profile;
+    }
     return stateCopy
 }
 
 export const addPostActionCreator = ()=> ({type:'addPost'});
 export const changeNewPostTextActionCreator = (text)=> ({type:'changeNewPostText',text:text});
+export const setUserProfile = (profile)=>({type:'setUserProfile',profile})
 
 export default profileReducer;
