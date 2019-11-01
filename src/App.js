@@ -9,6 +9,7 @@ import {BrowserRouter, Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
+import AuthorizationContainer from "./components/Authorization/AuthorizationContainer";
 
 
 const App = (props) => {
@@ -28,6 +29,7 @@ const App = (props) => {
                 <Route component={Music} path='/music'/>
                 <Route component={Settings} path='/settings'/>
                 <Route render={()=><UsersContainer/>} path='/users'></Route>
+                <Route component={AuthorizationContainer} path='/login'></Route>
             </div>
         </div>
     </BrowserRouter>;
