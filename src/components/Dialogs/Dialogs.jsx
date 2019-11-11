@@ -2,6 +2,7 @@ import React from 'react';
 import cl from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/Dialogitem";
 import Message from "./Message/Message";
+import TextAreaAndButton from "../Profile/MyPosts/Post/TextAreaAndButton";
 
 
 
@@ -10,12 +11,10 @@ const Dialogs = (props) => {
     let dialogElements = props.dialogs.dialogsData.map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
     let messageElements = props.dialogs.messagesData.map(message => <Message msg={message.name}/>);
 
-    let onTextChange = (e)=>{
-        props.onTextChange(e.target.value);
-    }
 
-    let addMessage = ()=>{
-        props.addMessage();
+
+    let sendMessage = (form)=>{
+        props.addMessage(form.text);
     }
 
     return (
@@ -28,8 +27,7 @@ const Dialogs = (props) => {
                 {messageElements}
 
                 <div>
-                    <div><textarea onChange={onTextChange} value ={props.dialogs.newMessage} props></textarea></div>
-                    <div><button onClick={addMessage}>Send</button></div>
+                    <TextAreaAndButton bText={'Send'} onSubmit={sendMessage}/>
                 </div>
             </div>
         </div>

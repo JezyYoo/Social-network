@@ -1,5 +1,6 @@
 import React from 'react';
 import cl from './ProfileInfo.module.css';
+import ProfileStatus from "./ProfileStatus";
 
 const ProfileInfo = (props) => {
 
@@ -10,10 +11,10 @@ const ProfileInfo = (props) => {
         <div>
             <div><img className={cl.main} src={props.profile.avatar} width='200px'></img></div>
             <div>
+                <div><b>Status:</b><ProfileStatus status={props.status} updateStatus={props.updateStatus}/></div>
                 <div><b>FirstName: </b> {props.profile.firstName}</div>
                 <div><b>Country: </b>{props.profile.location.country}</div>
                 <div><b>City: </b>{props.profile.location.city}</div>
-                <div><b>Status: </b>{props.profile.status}</div>
             </div>
         </div>
     )

@@ -11,32 +11,32 @@ const initialState ={
         {id: 3, msg: "React is so good", likes: '6'},
         {id: 4, msg: "Fair enough!", likes: '13'},
     ],
-    newPostText: 'aaaaaa',
-    profile:null
+    profile:null,
+    status:"status"
 }
 
 const profileReducer = (state = initialState,action)=>{
     let stateCopy = {...state};
     if(action.type == 'addPost')
     {
-        stateCopy.postsData = [...state.postsData,{id: 5, msg: stateCopy.newPostText, likes: '0'}];
-        stateCopy.newPostText = '';
-    }
-    else if(action.type == 'changeNewPostText')
-    {
-        stateCopy.newPostText  = action.text;
+        stateCopy.postsData = [...state.postsData,{id: 5, msg: action.text, likes: '0'}];
     }
     else if(action.type =='setUserProfile')
     {
         stateCopy.profile = action.profile;
     }
+    else if(action.type =='setStatus')
+    {
+        stateCopy.status = action.status;
+    }
+
     return stateCopy
 }
 
 //action creators
-export const addPostActionCreator = ()=> ({type:'addPost'});
-export const changeNewPostTextActionCreator = (text)=> ({type:'changeNewPostText',text:text});
+export const addPost = (text) => ({type:'addPost',text});
 export const setUserProfile = (profile)=>({type:'setUserProfile',profile})
+export const setStatus = (status) => ({type:'setStatus',status})
 
 //thunks
 export const getProfileThunkCreator = (userId) =>{
@@ -87,6 +87,10 @@ export const getProfileThunkCreator = (userId) =>{
             userId=4
         dispatch(setUserProfile(usersAjaxResponse[userId]))
     }
+}
+
+export const updateStatusThunkCreator = (status) => (dispatch) =>{
+    dispatch(setStatus(status))
 }
 
 export default profileReducer;

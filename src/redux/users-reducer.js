@@ -1,6 +1,7 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW ='UNFOLLOW';
 const SET_USERS ='SET_USERS';
+const SET_STATUS = "SET_STATUS";
 
 
 const initialState = {
@@ -28,10 +29,10 @@ const usersReducer =  (state = initialState,action)=>
                 users: state.users.map(u => (u.id === action.userId ? {...u,followed:false} : u))
             }
         case SET_USERS:
-            return {
-                ...state,
-                users:[...action.users]
-            }
+        return {
+            ...state,
+            users:[...action.users]
+        }
         default :
             return state;
     }
@@ -40,6 +41,7 @@ const usersReducer =  (state = initialState,action)=>
 export const follow = (userId) => ({type:FOLLOW,userId});
 export const unfollow = (userId) => ({type:UNFOLLOW,userId});
 export const setUsers = (users) => ({type:SET_USERS,users});
+
 
 
 export const getUsersThunkCreator = ()=>{
@@ -54,34 +56,34 @@ export const getUsersThunkCreator = ()=>{
                     firstName: 'Andrey',
                     status: 'Hello hello',
                     location: {city: 'Odessa', country: 'Ukraine'},
-                    followed: true
+                    followed: true,
                 },
                 {
                     id: 2,
                     firstName: 'Sandra',
                     status: 'Programming is cool',
                     location: {city: 'Moskow', country: 'Russia'},
-                    followed: false
+                    followed: false,
                 },
                 {
                     id: 3,
                     firstName: 'Petya',
                     status: 'I love France',
                     location: {city: 'Minsk', country: 'Belarus'},
-                    followed: true
+                    followed: true,
                 },
                 {
                     id: 4,
                     firstName: 'Sveta',
                     status: 'London is the capital of Grate Britain',
                     location: {city: 'London', country: 'UK'},
-                    followed: true
+                    followed: true,
                 },
                 {id: 5,
                     firstName: 'Danya',
                     status:'Hello React-Redux',
                     location:{city:'Odessa', country:'Ukraine'},
-                    followed:true
+                    followed:true,
                 }
             ]
         }
@@ -89,5 +91,6 @@ export const getUsersThunkCreator = ()=>{
         dispatch(setUsers(users))
     }
 }
+
 
 export default usersReducer;

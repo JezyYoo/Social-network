@@ -1,36 +1,16 @@
 import React from 'react';
-import Post from './Post/Post';
-import cl from './MyPosts.module.css'
+import {Field, reduxForm} from "redux-form";
 
 
-const MyPosts = (props) => {
-
-    let postElements = props.posts.map(post => <Post message={post.msg} likes={post.likes} />);
-
-    let newPostEl = React.createRef();
-
-    let addPost = ()=>{
-        props.addPost();
-    }
-
-    let onPostChange = ()=> {
-        let text = newPostEl.current.value;
-        props.updatePostText(text);
-    }
-
+let TextAreaAndButton = (props) => {
     return (
-        <div>
-            <div className={cl.addPost}>
-            <div><h3>My posts</h3></div>
-
-                <div><textarea ref={newPostEl} onChange={onPostChange} value={props.newText}/></div>
-                <button onClick={addPost}>Add</button>
-            </div>
-
-            {postElements}
-
-        </div>
+        <form onSubmit={props.handleSubmit}>
+            <div><Field component={'textarea'} name={'text'} placeholder={'Enter text'} /></div>
+            <div><button>{props.bText}</button></div>
+        </form>
     )
 }
 
-export default MyPosts;
+TextAreaAndButton = reduxForm({form:'areaAndButton'})(TextAreaAndButton)
+
+export default TextAreaAndButton;

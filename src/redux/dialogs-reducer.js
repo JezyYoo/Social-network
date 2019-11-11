@@ -17,16 +17,13 @@ const dialogsReducer = (state = initialState, action) => {
     var copyState = {...state}
 
     if (action.type == 'addMessage') {
-        copyState.messagesData = [...state.messagesData,{id: 4, name: state.newMessage}];
-        copyState.newMessage = '';
+        copyState.messagesData = [...state.messagesData,{id: 4, name: action.text}];
     }
-    else if (action.type == 'changeAddMessage') {
-        copyState.newMessage = action.mes_text;
-    }
+
     return copyState;
 }
 
-export const addMessageActionCreator = () => ({type: 'addMessage'});
-export const changeAddMessageActionCreator = (text) => ({type: 'changeAddMessage', mes_text: text});
+export const addMessageActionCreator = (text) => ({type: 'addMessage',text});
+
 
 export default dialogsReducer;
