@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from "react-redux";
 import Users from "./Users";
 import {follow, getUsersThunkCreator, setUsers, unfollow} from "../../redux/users-reducer";
+import {getUsers, getUsersSuperSelector} from "../../redux/selectors/users-selectors";
 
 
 class UsersContainer extends React.Component{
@@ -17,7 +18,7 @@ class UsersContainer extends React.Component{
 
 const mapStateToProps = (state) => {
         return{
-            users:state.usersPage.users
+            users:getUsersSuperSelector(state)
         }
 }
 

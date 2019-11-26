@@ -1,7 +1,16 @@
+.addBlock{
+    border:2px solid black;
+    border-radius: 5px;
+    background-color: white;
+    padding-left: 19px;
+    padding-bottom: 10px;
+    margin-top:20px;
+}
+
 .addPost{
-    margin-top:80px;
     margin-bottom: 40px;
 }
 textarea{
     width:30%;
 }
+

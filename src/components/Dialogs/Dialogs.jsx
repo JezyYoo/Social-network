@@ -18,7 +18,7 @@ const Dialogs = (props) => {
     }
 
     return (
-        <div className={`row col-md-10 ${cl.dialogs}`}>
+        <div className={`col-md-10 row ${cl.dialogs}`}>
             <div className={`col-md-2 ${cl.dialogItems}`}>
 
                 {dialogElements}

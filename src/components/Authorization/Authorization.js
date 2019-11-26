@@ -1,28 +1,52 @@
 import React from 'react'
-import cl from "./Auth.module.css"
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../FornControls/TextArea";
+import {maxLength, requiredField} from "../../validators";
+import {Redirect} from "react-router-dom";
+import s from './Auth.module.css'
 
-const Authorization = (props)=> {
-    const onSubmit = (formData) =>{
+const Authorization = (props) => {
+    const onSubmit = (formData) => {
         console.log(formData);
+        props.login(formData);
     }
 
-    return <div>
+    if (props.isAuth)
+        return <Redirect to='/profile'/>
+
+    return <div className={`${s.auth} col-md-10`}>
         <h1>Login</h1>
-        <LoginForm onSubmit={onSubmit}/>
+        <LoginForm  onSubmit={onSubmit}/>
     </div>
 }
 
-let LoginForm = (props)=>{
-        
+const max_length_login = maxLength(8)
+const max_length_password = maxLength(16)
+
+let LoginForm = (props) => {
     return <form onSubmit={props.handleSubmit}>
-        <div>Login: <Field component={'input'} placeholder={"login"} name={'login'}/></div>
-        <div>Password <Field component={'input'} placeholder={"password"} name={'password'}/></div>
-        <div><input component={'input'} type="checkbox" name={'rememberMe'}/> remember me</div>
-        <div><button>Login</button></div>
+        <div>
+            <div className={s.inlineBlock}> <b>Login: </b></div>
+            <Field component={Input} validate={[requiredField, max_length_login]} placeholder={"login"} name={'login'}/>
+        </div>
+
+        <div><b>Password:</b>
+            <Field component={Input} validate={[requiredField, max_length_password]} placeholder={"password"}
+                   name={'password'} type={'password'}/>
+        </div>
+
+        <div>
+            <input component={'input'} type="checkbox" name={'rememberMe'}/>
+            remember me
+        </div>
+
+        {props.error && <div className={s.formError}>{props.error}</div>}
+        <div>
+            <button>Login</button>
+        </div>
     </form>
 }
 
-LoginForm = reduxForm({form:'login'})(LoginForm);
+LoginForm = reduxForm({form: 'login'})(LoginForm);
 
-export default Authorization ;
+export default Authorization;

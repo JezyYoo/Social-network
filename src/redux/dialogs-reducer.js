@@ -1,6 +1,6 @@
 const initialState = {
         dialogsData: [
-            {id: 1, name: 'Angrey'},
+            {id: 1, name: 'Andrey'},
             {id: 2, name: 'Petya'},
             {id: 3, name: 'Sveta'},
         ],
@@ -16,7 +16,7 @@ const initialState = {
 const dialogsReducer = (state = initialState, action) => {
     var copyState = {...state}
 
-    if (action.type == 'addMessage') {
+    if (action.type === 'addMessage') {
         copyState.messagesData = [...state.messagesData,{id: 4, name: action.text}];
     }
 

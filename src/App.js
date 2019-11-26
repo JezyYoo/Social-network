@@ -10,15 +10,16 @@ import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import AuthorizationContainer from "./components/Authorization/AuthorizationContainer";
-
+import HeaderContainer from "./components/Header/HeaderContainer";
+import cl from './App.module.css'
 
 const App = (props) => {
     return <BrowserRouter>
         <div className="container">
             <div className="row">
-                <Header/>
+                <HeaderContainer/>
             </div>
-            <div className="row">
+            <div className={` row ${cl.all}`}>
                 <Navbar/>
 
                 <Route render={() => <DialogsContainer />}

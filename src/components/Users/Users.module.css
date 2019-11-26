@@ -1,0 +1,12 @@
+.usersPage{
+    background-color: rgba(217, 217, 217, 0.32);
+    padding-top:20px;
+}
+
+.user{
+
+    border:2px solid black;
+    border-radius:6px;
+    padding:10px 0 10px 20px;
+    margin-bottom: 30px;
+}

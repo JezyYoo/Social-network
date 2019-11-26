@@ -8,8 +8,8 @@ const ProfileInfo = (props) => {
         return <div></div>
 
     return (
-        <div>
-            <div><img className={cl.main} src={props.profile.avatar} width='200px'></img></div>
+        <div className={cl.info}>
+            <div className={cl.img}><img alt={""} className={cl.main} src={props.profile.avatar} width='200px'></img></div>
             <div>
                 <div><b>Status:</b><ProfileStatus status={props.status} updateStatus={props.updateStatus}/></div>
                 <div><b>FirstName: </b> {props.profile.firstName}</div>

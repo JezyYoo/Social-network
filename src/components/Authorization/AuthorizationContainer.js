@@ -1,7 +1,7 @@
 import React from 'react'
 import Authorization from "./Authorization";
 import {connect} from "react-redux";
-import {logIn, logOut} from "../../redux/auth-reducer";
+import {login} from "../../redux/auth-reducer";
 
 class AuthorizationContainer extends React.Component {
 
@@ -16,4 +16,4 @@ const mapStateToProps = (state) =>{
     }
 }
 
-export default connect(mapStateToProps,{logIn,logOut})(AuthorizationContainer)  ;
+export default connect(mapStateToProps,{login})(AuthorizationContainer)  ;

@@ -1,5 +1,4 @@
 import React from 'react';
-import cl from './Music.css';
 
 const Music = () =>{
     return(

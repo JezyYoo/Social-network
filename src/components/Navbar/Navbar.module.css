@@ -1,16 +1,27 @@
 .navg{
-    background-color: rgb(255, 187, 0);
+    background-color: rgba(217, 217, 217, 0.32);
+    padding-top:20px;
     }
 
 a {
-    color: white;
+    color: dodgerblue;
+    font-weight: bold;
 }
 .menu_item{
     padding-bottom: 6px;
+    border:2px solid black;
+    border-radius: 8px;
+    text-align:center;
+    margin-bottom:3px;
+
+
+}
+.menu_item:hover{
+    background-color:white;
 }
 a:hover{
-    color: rgba(255, 17, 163, 0.46);
     text-decoration: none;
+    color: rgb(43, 24, 255);
 }
 .active{
     color:red;

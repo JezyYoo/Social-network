@@ -1,6 +1,9 @@
-.content{
-    background-color:yellow;
-  }
-  .main{
+.content
+{
+    background-color: rgba(217, 217, 217, 0.32);;
+}
+
+.main
+{
     width:100%;
-  }
+}

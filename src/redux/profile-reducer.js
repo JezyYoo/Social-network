@@ -17,15 +17,15 @@ const initialState ={
 
 const profileReducer = (state = initialState,action)=>{
     let stateCopy = {...state};
-    if(action.type == 'addPost')
+    if(action.type === 'addPost')
     {
         stateCopy.postsData = [...state.postsData,{id: 5, msg: action.text, likes: '0'}];
     }
-    else if(action.type =='setUserProfile')
+    else if(action.type === 'setUserProfile')
     {
         stateCopy.profile = action.profile;
     }
-    else if(action.type =='setStatus')
+    else if(action.type === 'setStatus')
     {
         stateCopy.status = action.status;
     }
@@ -38,56 +38,57 @@ export const addPost = (text) => ({type:'addPost',text});
 export const setUserProfile = (profile)=>({type:'setUserProfile',profile})
 export const setStatus = (status) => ({type:'setStatus',status})
 
+let usersAjaxResponse = [
+    {
+        id: 1,
+        firstName: 'Andrey',
+        status: 'Hello hello',
+        location: {city: 'Odessa', country: 'Ukraine'},
+        followed: true,
+        avatar: smth
+    },
+    {
+        id: 2,
+        firstName: 'Sandra',
+        status: 'Programming is cool',
+        location: {city: 'Moskow', country: 'Russia'},
+        followed: false,
+        avatar: har
+    },
+    {
+        id: 3,
+        firstName: 'Petya',
+        status: 'I love France',
+        location: {city: 'Minsk', country: 'Belarus'},
+        followed: true,
+        avatar: pool
+    },
+    {
+        id: 4,
+        firstName: 'Sveta',
+        status: 'London is the capital of Grate Britain',
+        location: {city: 'London', country: 'UK'},
+        followed: true,
+        avatar: anon
+    },
+    {
+        id: 5,
+        firstName: 'Danya',
+        status:'Hello React-Redux',
+        location:{city:'Odessa', country:'Ukraine'},
+        followed:true,
+        avatar: m
+    }
+]
+
 //thunks
-export const getProfileThunkCreator = (userId) =>{
-    return (dispatch) =>{
-        let usersAjaxResponse = [
-            {
-                id: 1,
-                firstName: 'Andrey',
-                status: 'Hello hello',
-                location: {city: 'Odessa', country: 'Ukraine'},
-                followed: true,
-                avatar: smth
-            },
-            {
-                id: 2,
-                firstName: 'Sandra',
-                status: 'Programming is cool',
-                location: {city: 'Moskow', country: 'Russia'},
-                followed: false,
-                avatar: har
-            },
-            {
-                id: 3,
-                firstName: 'Petya',
-                status: 'I love France',
-                location: {city: 'Minsk', country: 'Belarus'},
-                followed: true,
-                avatar: pool
-            },
-            {
-                id: 4,
-                firstName: 'Sveta',
-                status: 'London is the capital of Grate Britain',
-                location: {city: 'London', country: 'UK'},
-                followed: true,
-                avatar: anon
-            },
-            {
-                id: 5,
-                firstName: 'Danya',
-                status:'Hello React-Redux',
-                location:{city:'Odessa', country:'Ukraine'},
-                followed:true,
-                avatar: m
-            }
-        ]
-        if(userId == undefined)
+export const getProfileThunkCreator = (userId) => (dispatch)=>{
+    debugger
+        if(isNaN(userId))
             userId=4
         dispatch(setUserProfile(usersAjaxResponse[userId]))
     }
-}
+
 
 export const updateStatusThunkCreator = (status) => (dispatch) =>{
     dispatch(setStatus(status))

@@ -1,9 +1,14 @@
-import React from 'react'
+.formControl{
 
-export const TextArea = ({input,meta,...props})=>{
-    return (
-        <div>
-            <textarea {...input} {...props}></textarea>
-        </div>
-    )
+}
+.formInput{
+    display:inline-block;
+}
+
+.error{
+    border: 1px solid red;
+}
+
+.formControl span{
+    color:red;
 }
